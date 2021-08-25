@@ -9,27 +9,32 @@ export default function TextForm(props) {
     const handleToUpCase = () => {
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Converted to Upper Case", "success");
     }
     
     const handleToLoCase = () => {
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("Converted to Lower Case", "success");
     }
     
     const deleteText = () => {
         let newText = "";
         setText(newText);
+        props.showAlert("Text Cleared", "success");
     }
     
     const handleCopy = () => {
         var text = document.getElementById("myText");
         text.select();
         navigator.clipboard.writeText(text.value);
+        props.showAlert("Copied to Clipboard", "success");
     }
     
     const handleExtraSpaces = () => {
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "));
+        props.showAlert("Extra Spaces Removed", "success");
     }
     
     const [text, setText] = useState("");
